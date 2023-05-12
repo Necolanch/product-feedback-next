@@ -14,7 +14,7 @@ export default function Home() {
       const response = await fetch("https://jsonplaceholder.typicode.com/posts");
       const data = await response.json();
 
-      const feedback = data.map((fb: any) => {
+      const feedback = data.map((fb: { userId: number, id: number, title: string, body: string }) => {
         return {
           id: fb.id,
           title: fb.title,
@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <main className="bg-white flex min-h-screen flex-col items-center justify-between p-24">
       {
-        feedback.map((fb: any) => {
+        feedback.map((fb: { likes: number, id: number, title: string, body: string }) => {
 
           return (
             <div key={fb.id} className="text-black">
